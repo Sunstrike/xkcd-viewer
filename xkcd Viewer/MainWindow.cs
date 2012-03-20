@@ -91,7 +91,7 @@ namespace xkcd_Viewer
 
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // STUB: Load prefs window
+            new Preferences(core).Show();
         }
 
         private void searchGoButton_Click(object sender, EventArgs e)

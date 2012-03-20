@@ -15,6 +15,9 @@ namespace xkcd_Viewer
         ASComicDatabase dbEngine;
         ASComicAccess.xkcd accessEngine;
 
+        // Max comic ID
+        int maxID = -1;
+
         // First runs timer result
         long timerResult = -1;
         
@@ -118,6 +121,7 @@ namespace xkcd_Viewer
         internal int getMaxID()
         {
             int i = int.Parse(accessEngine.getComic().num); // Grab max ID from latest comic JSON
+            maxID = i;
             return i;
         }
 
@@ -146,6 +150,17 @@ namespace xkcd_Viewer
             }
 
             return title;
+        }
+
+        internal void jettisonDB()
+        {
+            dbEngine.createDbFile(); // Boom, Datashot.
+        }
+
+        internal void deleteAllImages()
+        {
+            for (int i = 0; i >= maxID; i++) // This will get every ID cleared
+                dbEngine.deleteImgData(i);
         }
     }
 }
