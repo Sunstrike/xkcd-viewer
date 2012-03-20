@@ -55,5 +55,10 @@ namespace xkcd_Viewer
         {
             // STUB: To last image
         }
+
+        private void goToIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // STUB: Show go-to dialog
+        }
     }
 }
