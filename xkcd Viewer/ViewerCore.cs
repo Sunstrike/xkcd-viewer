@@ -75,5 +75,44 @@ namespace xkcd_Viewer
             timerResult = timer.ElapsedMilliseconds;
             Debug.WriteLine("[INFO] Completed first-run initialization in " + timerResult + "ms");
         }
+
+        internal Image getImage(int ID)
+        {
+            // Simple enough command; call the functions to get images. Have view controller ready to catch exceptions.
+            Image img = null;
+            
+            try
+            {
+                img = dbEngine.getImageRow(ID); // Try getting from the cache
+            }
+            catch
+            {
+                try
+                {
+                    // Try from download
+                    String imgPath = accessEngine.getComic().img; // Get download path
+                    img = __downloadImage(imgPath); // Do download
+
+                    // Send for caching if using Offline Mode
+                    if (xkcd_Viewer.Properties.Settings.Default.offlineMode)
+                        dbEngine.updateImgData(ID, img);
+                }
+                catch
+                {
+                    // In case of fail, return NULL
+                    img = null;
+                }
+            }
+
+            return img;
+        }
+
+        private Image __downloadImage(string imgPath)
+        {
+            // Downloads an image file
+            byte[] rawData = new WebClient().DownloadData(imgPath);
+            // Convert and return
+            return (Image)new ImageConverter().ConvertFrom(rawData);
+        }
     }
 }
