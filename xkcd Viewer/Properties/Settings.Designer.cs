@@ -46,5 +46,17 @@ namespace xkcd_Viewer.Properties {
                 this["offlineMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int lastComicID {
+            get {
+                return ((int)(this["lastComicID"]));
+            }
+            set {
+                this["lastComicID"] = value;
+            }
+        }
     }
 }

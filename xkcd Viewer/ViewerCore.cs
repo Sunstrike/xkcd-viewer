@@ -78,7 +78,7 @@ namespace xkcd_Viewer
 
         internal Image getImage(int ID)
         {
-            // Simple enough command; call the functions to get images. Have view controller ready to catch exceptions.
+            // Simple enough command; call the functions to get images. Have view controller ready to catch NULL values.
             Image img = null;
             
             try
@@ -90,7 +90,7 @@ namespace xkcd_Viewer
                 try
                 {
                     // Try from download
-                    String imgPath = accessEngine.getComic().img; // Get download path
+                    String imgPath = accessEngine.getComic(ID).img; // Get download path
                     img = __downloadImage(imgPath); // Do download
 
                     // Send for caching if using Offline Mode
@@ -113,6 +113,39 @@ namespace xkcd_Viewer
             byte[] rawData = new WebClient().DownloadData(imgPath);
             // Convert and return
             return (Image)new ImageConverter().ConvertFrom(rawData);
+        }
+
+        internal int getMaxID()
+        {
+            int i = int.Parse(accessEngine.getComic().num); // Grab max ID from latest comic JSON
+            return i;
+        }
+
+        internal string getTitle(int ID)
+        {
+            string title;
+            
+            try
+            {
+                title = dbEngine.getRow(ID)["safe_title"]; // Try getting from the cache
+                if (title == "")
+                    throw new Exception();
+            }
+            catch
+            {
+                try
+                {
+                    // Try from download
+                    title = accessEngine.getComic(ID).safe_title; // Get title by download
+                }
+                catch
+                {
+                    // In case of fail, return NULL
+                    title = null;
+                }
+            }
+
+            return title;
         }
     }
 }
