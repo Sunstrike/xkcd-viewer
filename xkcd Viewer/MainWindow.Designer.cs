@@ -49,10 +49,12 @@
             this.backButton = new System.Windows.Forms.ToolStripButton();
             this.goToIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.imagePanel = new System.Windows.Forms.Panel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.imagePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -76,6 +78,7 @@
             // 
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(100, 16);
+            this.statusBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.statusBar.Visible = false;
             // 
             // menuStrip
@@ -153,12 +156,13 @@
             // 
             // pictureBox
             // 
+            this.pictureBox.BackColor = System.Drawing.Color.White;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox.Location = new System.Drawing.Point(0, 24);
+            this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(573, 446);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox.Size = new System.Drawing.Size(573, 415);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox.TabIndex = 2;
             this.pictureBox.TabStop = false;
             // 
@@ -226,13 +230,25 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(154, 6);
             // 
+            // imagePanel
+            // 
+            this.imagePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.imagePanel.AutoScroll = true;
+            this.imagePanel.Controls.Add(this.pictureBox);
+            this.imagePanel.Location = new System.Drawing.Point(0, 27);
+            this.imagePanel.Name = "imagePanel";
+            this.imagePanel.Size = new System.Drawing.Size(573, 415);
+            this.imagePanel.TabIndex = 4;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 492);
+            this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
@@ -246,6 +262,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.imagePanel.ResumeLayout(false);
+            this.imagePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,6 +291,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goToIDToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.Panel imagePanel;
     }
 }
 
