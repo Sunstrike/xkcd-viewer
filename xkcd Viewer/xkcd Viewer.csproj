@@ -124,10 +124,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\chess_photo.png" />
-    <Content Include="Images\magic_school_bus.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>

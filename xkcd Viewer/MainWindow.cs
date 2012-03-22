@@ -62,7 +62,7 @@ namespace xkcd_Viewer
                 statusText.Text = "ERR: Could not get image for comic " + ID.ToString();
             else
             {
-                this.Text = "xkcd Viewer - " + core.getTitle(ID);
+                this.Text = "xkcd Viewer - [" + ID.ToString() + "] " + core.getTitle(ID);
                 pictureBox.Image = img;
                 statusText.Text = "Ready";
                 statusBar.Visible = false;
@@ -112,6 +112,11 @@ namespace xkcd_Viewer
         private void goToIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // STUB: Show go-to dialog
+        }
+
+        private void copyURLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText("http://xkcd.com/" + currentID); // Copy current comic's URL to clipboard, obviously
         }
     }
 }
