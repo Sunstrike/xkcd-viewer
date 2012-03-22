@@ -115,7 +115,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox offlineModeCheck;
         private System.Windows.Forms.Button launchButton;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private System.Windows.Forms.Integration.ElementHost elementHost2;
     }
 }

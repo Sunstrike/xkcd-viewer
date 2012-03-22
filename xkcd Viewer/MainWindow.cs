@@ -39,7 +39,7 @@ namespace xkcd_Viewer
             }
         }
 
-        private void __goToID(int ID)
+        internal void __goToID(int ID)
         {
             Image img;
             if (ID == 1) // If ID is 1, disable the back button (There is no zero!)
@@ -53,7 +53,6 @@ namespace xkcd_Viewer
                 forwardButton.Enabled = true;
 
             statusText.Text = "Getting comic " + ID.ToString() + "...";
-            statusBar.Visible = true;
             currentID = ID;
             Application.DoEvents();
 
@@ -65,7 +64,6 @@ namespace xkcd_Viewer
                 this.Text = "xkcd Viewer - [" + ID.ToString() + "] " + core.getTitle(ID);
                 pictureBox.Image = img;
                 statusText.Text = "Ready";
-                statusBar.Visible = false;
             }
         }
 
@@ -94,11 +92,6 @@ namespace xkcd_Viewer
             new Preferences(core).Show();
         }
 
-        private void searchGoButton_Click(object sender, EventArgs e)
-        {
-            // STUB: Call search routine
-        }
-
         private void forwardButton_Click(object sender, EventArgs e)
         {
             __goToID(currentID + 1);
@@ -111,7 +104,7 @@ namespace xkcd_Viewer
 
         private void goToIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // STUB: Show go-to dialog
+            new GoToDialog(this, core).Show();
         }
 
         private void copyURLToolStripMenuItem_Click(object sender, EventArgs e)

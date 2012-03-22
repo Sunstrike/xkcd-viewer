@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusBar = new System.Windows.Forms.ToolStripProgressBar();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,8 +44,6 @@
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.searchBox = new System.Windows.Forms.ToolStripTextBox();
-            this.searchGoButton = new System.Windows.Forms.ToolStripButton();
             this.forwardButton = new System.Windows.Forms.ToolStripButton();
             this.backButton = new System.Windows.Forms.ToolStripButton();
             this.imagePanel = new System.Windows.Forms.Panel();
@@ -62,8 +59,7 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusText,
-            this.statusBar});
+            this.statusText});
             this.statusStrip1.Location = new System.Drawing.Point(0, 470);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(573, 22);
@@ -75,13 +71,6 @@
             this.statusText.Name = "statusText";
             this.statusText.Size = new System.Drawing.Size(61, 17);
             this.statusText.Text = "X_STATUS";
-            // 
-            // statusBar
-            // 
-            this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(100, 16);
-            this.statusBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.statusBar.Visible = false;
             // 
             // menuStrip
             // 
@@ -166,7 +155,7 @@
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.preferencesToolStripMenuItem.Text = "Preferences...";
             this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
@@ -186,8 +175,6 @@
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.searchBox,
-            this.searchGoButton,
             this.forwardButton,
             this.backButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 445);
@@ -195,21 +182,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(573, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // searchBox
-            // 
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(200, 25);
-            // 
-            // searchGoButton
-            // 
-            this.searchGoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.searchGoButton.Image = ((System.Drawing.Image)(resources.GetObject("searchGoButton.Image")));
-            this.searchGoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.searchGoButton.Name = "searchGoButton";
-            this.searchGoButton.Size = new System.Drawing.Size(46, 22);
-            this.searchGoButton.Text = "Search";
-            this.searchGoButton.Click += new System.EventHandler(this.searchGoButton_Click);
             // 
             // forwardButton
             // 
@@ -288,7 +260,6 @@
 
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusText;
-        private System.Windows.Forms.ToolStripProgressBar statusBar;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
@@ -299,8 +270,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton backButton;
         private System.Windows.Forms.ToolStripButton forwardButton;
-        private System.Windows.Forms.ToolStripTextBox searchBox;
-        private System.Windows.Forms.ToolStripButton searchGoButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
