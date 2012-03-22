@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Net;
+using System.Diagnostics;
+using System.IO;
 
 namespace xkcd_Viewer
 {
@@ -72,19 +75,45 @@ namespace xkcd_Viewer
             Application.Exit(); // This action comes from the 'Exit' command so...
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // STUB: Add About... dialog.
-        }
-
         private void saveImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // STUB: Save current image to drive
+            ImageSaveDialog.FileName = currentID.ToString();
+            ImageSaveDialog.ShowDialog();
+        }
+
+        // 'Catchers Mitt' for Image save
+        private void ImageSaveDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            string path = ImageSaveDialog.FileName;
+            Debug.WriteLine("[INFO] Saving image to " + path);
+            try
+            {
+                core.getImage(currentID).Save(path);
+            }
+            catch
+            {
+
+            }
         }
 
         private void saveJSONFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // STUB: Get and save raw JSON file
+            JSONSaveDialog.FileName = currentID.ToString();
+            JSONSaveDialog.ShowDialog();
+        }
+
+        // 'Catchers Mitt' for JSON save
+        private void JSONSaveDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            string path = JSONSaveDialog.FileName;
+            Debug.WriteLine("[INFO] Saving JSON to " + path);
+            try
+            {
+                byte[] JSON = __getXkcdJSON(currentID);
+                File.WriteAllBytes(path, JSON);
+            }
+            catch (Exception ex)
+            { Debug.WriteLine("[ERR] Exception caught: " + ex.Message); } // No need to catch; just avoid the rabid exception
         }
 
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,6 +139,24 @@ namespace xkcd_Viewer
         private void copyURLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clipboard.SetText("http://xkcd.com/" + currentID); // Copy current comic's URL to clipboard, obviously
+        }
+
+        // From ASComicAccess (it's private so we copy it)
+        static private byte[] __getXkcdJSON(int id)
+        {
+            WebClient connectAgent = new WebClient();
+
+            try
+            {
+                // Unlike in ASLib, we do not need to do parsing on this. So why should we?
+                byte[] rawData = connectAgent.DownloadData("http://xkcd.com/" + id.ToString() + "/info.0.json");
+                return rawData;
+            }
+            catch (WebException)
+            {
+                MessageBox.Show("Could not get JSON data.\n\n Are you online?");
+                throw;
+            }
         }
     }
 }

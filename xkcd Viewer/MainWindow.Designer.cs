@@ -38,17 +38,18 @@
             this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveJSONFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.forwardButton = new System.Windows.Forms.ToolStripButton();
             this.backButton = new System.Windows.Forms.ToolStripButton();
             this.imagePanel = new System.Windows.Forms.Panel();
-            this.copyURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.JSONSaveDialog = new System.Windows.Forms.SaveFileDialog();
+            this.ImageSaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.statusStrip1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -91,7 +92,6 @@
             this.saveImageToolStripMenuItem,
             this.saveJSONFileToolStripMenuItem,
             this.toolStripSeparator1,
-            this.aboutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -128,13 +128,6 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(154, 6);
             // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.aboutToolStripMenuItem.Text = "About...";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -152,10 +145,22 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
+            // copyURLToolStripMenuItem
+            // 
+            this.copyURLToolStripMenuItem.Name = "copyURLToolStripMenuItem";
+            this.copyURLToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.copyURLToolStripMenuItem.Text = "Copy URL";
+            this.copyURLToolStripMenuItem.Click += new System.EventHandler(this.copyURLToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
+            // 
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.preferencesToolStripMenuItem.Text = "Preferences...";
             this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
@@ -218,17 +223,17 @@
             this.imagePanel.Size = new System.Drawing.Size(573, 415);
             this.imagePanel.TabIndex = 4;
             // 
-            // copyURLToolStripMenuItem
+            // JSONSaveDialog
             // 
-            this.copyURLToolStripMenuItem.Name = "copyURLToolStripMenuItem";
-            this.copyURLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copyURLToolStripMenuItem.Text = "Copy URL";
-            this.copyURLToolStripMenuItem.Click += new System.EventHandler(this.copyURLToolStripMenuItem_Click);
+            this.JSONSaveDialog.DefaultExt = "json";
+            this.JSONSaveDialog.Filter = "JSON|*.json|All files|*.*";
+            this.JSONSaveDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.JSONSaveDialog_FileOk);
             // 
-            // toolStripSeparator3
+            // ImageSaveDialog
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.ImageSaveDialog.DefaultExt = "png";
+            this.ImageSaveDialog.Filter = "Portable Network Graphics|*.png|All files|*.*";
+            this.ImageSaveDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.ImageSaveDialog_FileOk);
             // 
             // MainWindow
             // 
@@ -271,13 +276,14 @@
         private System.Windows.Forms.ToolStripButton backButton;
         private System.Windows.Forms.ToolStripButton forwardButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goToIDToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.Panel imagePanel;
         private System.Windows.Forms.ToolStripMenuItem copyURLToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.SaveFileDialog JSONSaveDialog;
+        private System.Windows.Forms.SaveFileDialog ImageSaveDialog;
     }
 }
 
